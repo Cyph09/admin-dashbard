@@ -1,0 +1,11 @@
+mixin userForm()
+    form(action="/add", method="post" class="card text-dark")
+        label(for="firstName") First Name
+        input(type="text" name="firstName")
+        labe(for="lastName") Last Name
+        input(type="text" name="lastName")
+        label(for="title") Title
+        input(type="text" name="title")
+        label(for="company") Company
+        input(type="text" name="company")
+        input(type="submit" value="Save ✔" class="btn")

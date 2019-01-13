@@ -1,5 +1,6 @@
 const express = require("express");
 const path = require("path");
+const bodyParser = require("body-parser");
 const indexRouter = require("./routes/index");
 
 // Express app
@@ -13,6 +14,7 @@ app.set("view engine", "pug");
 app.use(express.static(path.join(__dirname, "public")));
 
 // Middleware
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // Use Routes
 app.use("/", indexRouter);

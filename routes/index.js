@@ -10,10 +10,14 @@ router.get("/", adminController.index);
 // GET /usreId:user-profile
 router.get("/user-profile", adminController.userProfile);
 
-// GET /add-user || /:userId/edit-user
-router.get("/edit-user", adminController.addUserForm);
+// GET /:userId/edit-user
+router.get("/edit-user", adminController.addUser);
+
+// GET /add
+router.get("/add", adminController.addUser);
 
 //POST /add-user
+router.post("/add", adminController.createUser);
 
 // PUT /:userId/edit-user
 
