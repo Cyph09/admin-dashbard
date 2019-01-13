@@ -1,0 +1,25 @@
+{
+  "name": "admin-dashboard",
+  "version": "1.0.0",
+  "description": "Node.js Admin Dashboard app",
+  "main": "start.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently \" npm run watch-node\"  \"npm run watch-sass\"",
+    "watch-node": "nodemon start.js",
+    "watch-sass": "node-sass -w sass -o public/css --recursive"
+  },
+  "author": "Swaleh Mhina",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.3",
+    "pug": "^2.0.3"
+  },
+  "devDependencies": {
+    "concurrently": "^4.1.0",
+    "node-sass": "^4.11.0",
+    "nodemon": "^1.18.9"
+  }
+}
