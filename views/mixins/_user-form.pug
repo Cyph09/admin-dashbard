@@ -1,11 +1,11 @@
-mixin userForm()
-    form(action="/add", method="post" class="card text-dark")
+mixin userForm(user = {})
+    form(action=`/add/${user._id || ''}`, method="post")
         label(for="firstName") First Name
-        input(type="text" name="firstName")
+        input(type="text" name="firstName" value = user.firstName required)
         labe(for="lastName") Last Name
-        input(type="text" name="lastName")
+        input(type="text" name="lastName" value = user.lastName required)
         label(for="title") Title
-        input(type="text" name="title")
+        input(type="text" name="title" value = user.title required)
         label(for="company") Company
-        input(type="text" name="company")
+        input(type="text" name="company" value = user.company required)
         input(type="submit" value="Save ✔" class="btn")

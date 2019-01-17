@@ -3,39 +3,18 @@ extends layout
 block content
     .card.text-dark
         ul.collection
-            li.collection__item.avatar
-                img.circle(src="img/avatar.png", alt="")
-                .collection__item-text
-                    span.title First User Name
-                    p.sub User Title
-                a.secondary-content(href="#")
-                    i.material-icons send
-            li.collection__item.avatar
-                img.circle(src="img/avatar.png", alt="")
-                .collection__item-text
-                    span.title Second User Name
-                    p.sub User Title
-                a.secondary-content(href="#")
-                    i.material-icons send
-            li.collection__item.avatar
-                img.circle(src="img/avatar.png", alt="")
-                .collection__item-text
-                    span.title Third User Name
-                    p.sub User Title
-                a.secondary-content(href="#")
-                    i.material-icons send
-            li.collection__item.avatar
-                img.circle(src="img/avatar.png", alt="")
-                .collection__item-text
-                    span.title Fourth User Name
-                    p.sub User Title
-                a.secondary-content(href="#")
-                    i.material-icons send
-            li.collection__item.avatar
-                img.circle(src="img/avatar.png", alt="")
-                .collection__item-text
-                    span.title Fifth User Name
-                    p.sub User Title
-                a.secondary-content(href="#")
-                    i.material-icons send    
-        button.btn Create new User
+            each user in users
+                li.collection__item.avatar
+                    img.circle(src=`uploads/${user.photo || 'avatar.png'}`, alt="")
+                    .collection__item-text
+                        span.title #{user.name}
+                        p.sub #{user.title}
+                    a.secondary-content(href=`/users/delete/${user._id}`)
+                        i.material-icons delete
+                    a.secondary-content(href=`/users/edit-user/${user._id}`)
+                        i.material-icons edit
+                    a.secondary-content(href=`/users/user-profile/${user._id}`)
+                        i.material-icons chevron_right
+
+        form(action="/add", method="get")
+            button.btn Create new User

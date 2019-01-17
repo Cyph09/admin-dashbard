@@ -23,7 +23,7 @@ header {
   align-self: center;
   margin: auto;
   text-align: left;
-  max-width: 450px; }
+  max-width: 500px; }
 
 .collection {
   list-style: none;
@@ -78,7 +78,7 @@ header {
   padding: 5px 10px;
   background-color: #f1f1f1;
   box-sizing: border-box;
-  margin-top: -10px 0;
+  margin-top: -10px;
   text-align: center; }
 
 .btn {
@@ -107,3 +107,21 @@ a {
 footer {
   background: #9410a0;
   color: #fff; }
+
+form {
+  font-size: 18px;
+  text-align: left; }
+
+form input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #d4d3d3; }
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  background-color: #ddd;
+  outline: none; }

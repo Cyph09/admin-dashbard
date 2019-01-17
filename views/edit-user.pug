@@ -1,9 +1,9 @@
 extends layout
 
 include mixins/_user-form
-block content
-    h2 #{title}
 
-    +userForm()
+block content
+    .card.text-dark
+        +userForm(user)
 
     

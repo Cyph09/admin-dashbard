@@ -11,7 +11,7 @@ const UserSchema = new Schema({
 
 // Virtual full name
 UserSchema.virtual("name").get(function() {
-  return this.first_name + " " + this.last_name;
+  return this.firstName + " " + this.lastName;
 });
 
 // Create model
