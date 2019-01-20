@@ -1,8 +1,22 @@
 const mongoose = require("mongoose");
 const User = mongoose.model("User");
+
 // Display login page
-exports.login = (req, res) => {
-  res.render("login", { title: "Login" });
+exports.getSignin = (req, res, next) => {
+  console.log("signin page");
+  console.log(req.session.isLoggedin);
+  res.render("signin", { title: "Sigin" });
+};
+
+// Post login
+exports.postSignin = (req, res, next) => {
+  req.session.isLoggedin = true;
+  if (req.body.username === "Admin" && req.body.password === "admin") {
+    res.redirect("/dashboard");
+  } else {
+    res.redirect("/");
+    console.log("Wrong credentials");
+  }
 };
 
 // Dispalay list of all users/home page
@@ -40,7 +54,7 @@ exports.createUser = async (req, res) => {
   try {
     const user = new User(req.body);
     await user.save();
-    res.redirect("/");
+    res.redirect("/dashboard");
   } catch (error) {
     console.log(error);
   }
@@ -63,7 +77,7 @@ exports.updateUser = async (req, res) => {
       new: true,
       runValidators: true
     });
-    res.redirect("/");
+    res.redirect("/dashboard");
   } catch (error) {
     console.log(error);
   }
@@ -72,9 +86,9 @@ exports.updateUser = async (req, res) => {
 // Delete user
 exports.deleteUser = async (req, res) => {
   try {
-    const user = await User.findOneAndRemove({ _id: req.params.id });
+    const user = await User.findOneAndRemove({ _id: req.body.userId });
     console.log(`Deleted ${user.name}`);
-    res.redirect("/");
+    res.redirect("/dashboard");
   } catch (error) {
     console.log(error);
   }

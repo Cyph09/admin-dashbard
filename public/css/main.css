@@ -1,56 +1,57 @@
-html {
-  height: 100%; }
-
 body {
-  background: #444;
-  color: #fff;
+  background: #e2e1e0;
+  color: #94837e;
   margin: 0;
   padding: 0; }
 
 .container {
+  text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: center;
-  text-align: center;
-  min-width: 500px; }
+  width: 100vw; }
 
 header {
-  background: #9410a0;
-  color: #fff; }
+  background: #bbbaba;
+  color: #94837e; }
 
 .main-content {
   align-self: center;
   margin: auto;
   text-align: left;
-  max-width: 500px; }
+  width: 55vw; }
 
 .collection {
   list-style: none;
   padding: 0; }
 
 .collection__item {
+  box-sizing: border-box;
   width: 100%;
   display: flex;
   align-items: center;
   margin: auto;
-  border: 1px solid #444;
+  border: 1px solid #bdbdbd;
   border-radius: 4px; }
   .collection__item a {
     margin-left: auto; }
 
 .collection__item:hover {
-  background: #7cb8f0; }
+  background: #94837e; }
 
 .collection__item-text {
-  margin: 5px 20px; }
+  margin: 5px 10px; }
 
 .title {
   font-size: 1.5rem;
   margin: 0; }
 
 .text-dark {
-  color: #444; }
+  color: #403a3b; }
+
+.secondary-text {
+  color: #757575; }
 
 .sub {
   margin: 0;
@@ -66,17 +67,17 @@ header {
 .circle {
   width: 50px;
   height: 50px;
-  border: 1px solid #444;
+  border: 1px solid #bdbdbd;
   border-radius: 50%;
   padding: 10px;
   margin: 5px; }
 
 .card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   transition: 0.3s;
-  border-radius: 5px;
   padding: 5px 10px;
-  background-color: #f1f1f1;
+  background-color: #bbbaba;
   box-sizing: border-box;
   margin-top: -10px;
   text-align: center; }
@@ -86,12 +87,15 @@ header {
   outline: 0;
   display: inline-block;
   padding: 8px;
-  color: #fff;
-  background-color: #000;
+  color: #e2e1e0;
+  background-color: #403a3b;
   text-align: center;
   width: 100%;
   cursor: pointer;
   font-size: 18px; }
+
+.btn__danger {
+  background-color: #f44336; }
 
 .btn:hover {
   opacity: 0.7; }
@@ -99,29 +103,34 @@ header {
 a {
   text-decoration: none;
   font-size: 22px;
-  color: #000; }
+  color: #403a3b; }
 
 .pd0 {
   padding: 0; }
 
 footer {
-  background: #9410a0;
-  color: #fff; }
+  background: #e2e1e0;
+  color: #94837e; }
 
 form {
-  font-size: 18px;
-  text-align: left; }
+  font-size: 1.2rem;
+  text-align: left;
+  color: #757575; }
 
 form input[type="text"],
 input[type="password"] {
+  box-sizing: border-box;
   width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
   display: inline-block;
+  margin: 5px 0 22px 0;
+  padding: 15px;
   border: none;
-  background: #d4d3d3; }
+  background: #d4d3d3;
+  color: #94837e;
+  font-size: 1rem; }
 
 input[type="text"]:focus,
 input[type="password"]:focus {
   background-color: #ddd;
-  outline: none; }
+  outline: none;
+  color: #94837e; }

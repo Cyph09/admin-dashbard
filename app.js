@@ -1,6 +1,9 @@
-const express = require("express");
 const path = require("path");
+
+const express = require("express");
 const bodyParser = require("body-parser");
+const session = require("express-session");
+
 const indexRouter = require("./routes/index");
 
 // Express app
@@ -13,8 +16,12 @@ app.set("view engine", "pug");
 // Save up static files from public folder
 app.use(express.static(path.join(__dirname, "public")));
 
-// Middleware
+//Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(
+  session({ secret: "hadha huwa", resave: false, saveUninitialized: true })
+);
 
 // Use Routes
 app.use("/", indexRouter);

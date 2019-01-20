@@ -5,8 +5,14 @@ const router = express.Router();
 const adminController = require("../controllers/adminController");
 const errorController = require("../controllers/errorController");
 
+// GET sigin page
+router.get("/", adminController.getSignin);
+
+// POST sigin page
+router.post("/signin", adminController.postSignin);
+
 // GET homepage (Display list of users)
-router.get("/", adminController.index);
+router.get("/dashboard", adminController.index);
 
 // GET /add user form
 router.get("/add", adminController.addUser);
@@ -23,7 +29,7 @@ router.get("/users/user-profile/:id", adminController.userProfile);
 router.get("/users/edit-user/:id", adminController.editUser);
 
 // POST /:userId/delete-user
-router.post('/users/delete/:id', adminController.deleteUser);
+router.post("/delete/", adminController.deleteUser);
 
 // GET /404
 router.get("*", errorController.get404);

@@ -1,8 +1,8 @@
 mixin userForm(user = {})
     form(action=`/add/${user._id || ''}`, method="post")
         label(for="firstName") First Name
-        input(type="text" name="firstName" value = user.firstName required)
-        labe(for="lastName") Last Name
+        input(type="text" name="firstName" value = user.firstName required autofocus)
+        label(for="lastName") Last Name
         input(type="text" name="lastName" value = user.lastName required)
         label(for="title") Title
         input(type="text" name="title" value = user.title required)

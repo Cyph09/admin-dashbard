@@ -2,15 +2,18 @@ extends layout
 
 block content
     .card.text-dark.pd0
-        img(src=`/uploads/${user.photo || 'avatar2.png'}`, alt="", style="width:100%; height:55%")
+        img(src=`/uploads/${user.photo || 'avatar2.png'}`, alt="", style="width:100%; height:50%")
         h1= user.name
         p= user.title
         p= user.company
-        div(style="margin:24px 0;")
+        div(style="margin:24px 12px;")
             a(href="#")
                 i.fab.fa-dribbble
                 i.fab.fa-twitter
                 i.fab.fa-linkedin
                 i.fab.fa-facebook
-        button.btn Contact
+        form(action="/delete", method="post")
+            input(type="hidden" value= user._id name="userId")
+            button.btn.btn__danger(type="submit" value='DELETE')
+                i.material-icons delete
             
