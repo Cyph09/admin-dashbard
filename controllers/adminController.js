@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const User = mongoose.model("User");
+const { validationResult } = require("express-validator/check");
 
 // Display login page
 exports.getSignin = (req, res, next) => {
@@ -9,14 +10,39 @@ exports.getSignin = (req, res, next) => {
 };
 
 // Post login
-exports.postSignin = (req, res, next) => {
-  req.session.isLoggedin = true;
-  if (req.body.username === "Admin" && req.body.password === "admin") {
-    res.redirect("/dashboard");
-  } else {
-    res.redirect("/");
-    console.log("Wrong credentials");
+exports.postSignin = async (req, res, next) => {
+  const email = req.body.email;
+  const password = req.body.password;
+  const errors = validationResult(req);
+
+  try {
+    if (!errors.isEmpty()) {
+      console.log(errors);
+      return res.status(422).render("signin", {
+        title: "Signin",
+        errorMessages: errors.array()
+      });
+    }
+    const user = await User.findOne({ email: email, password: password });
+    if (email === user.email && password === user.password) {
+      req.session.isLoggedin = true;
+      res.redirect("/dashboard");
+      return next();
+    } else {
+      res.redirect("/");
+      console.log("Wrong credentials");
+    }
+  } catch (error) {
+    console.log(error);
   }
+};
+
+// Post signout
+exports.signout = (req, res) => {
+  req.session.destroy(err => {
+    res.redirect("/");
+    console.log(err);
+  });
 };
 
 // Dispalay list of all users/home page
@@ -25,7 +51,7 @@ exports.index = async (req, res) => {
     // Query database for all users
     const users = await User.find();
     res.render("index", {
-      title: "Admin Dashboard",
+      title: "Dashboard",
       users
     });
   } catch (error) {
@@ -51,8 +77,20 @@ exports.addUser = (req, res) => {
 
 // Create new user
 exports.createUser = async (req, res) => {
+  const errorFormatter = ({ location, msg, param, value, nestedErrors }) => {
+    return `${location}[${param}]: ${msg}`;
+  };
+  const user = new User(req.body);
+  const errors = validationResult(req).formatWith(errorFormatter);
+  if (!errors.isEmpty()) {
+    console.log(errors);
+    return res.status(422).render("edit-user", {
+      // path: "/add",
+      title: "Add New User",
+      errorMessages: errors.array()
+    });
+  }
   try {
-    const user = new User(req.body);
     await user.save();
     res.redirect("/dashboard");
   } catch (error) {

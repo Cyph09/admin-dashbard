@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const { body } = require("express-validator/check");
 
 // Require controller modules
 const adminController = require("../controllers/adminController");
@@ -8,8 +9,15 @@ const errorController = require("../controllers/errorController");
 // GET sigin page
 router.get("/", adminController.getSignin);
 
-// POST sigin page
-router.post("/signin", adminController.postSignin);
+// POST signin page
+router.post(
+  "/signin",
+  body("email", "Enter valid email").isEmail(),
+  adminController.postSignin
+);
+
+// POST signout
+router.post("/signout", adminController.signout);
 
 // GET homepage (Display list of users)
 router.get("/dashboard", adminController.index);
@@ -18,7 +26,19 @@ router.get("/dashboard", adminController.index);
 router.get("/add", adminController.addUser);
 
 //POST /add-user
-router.post("/add", adminController.createUser);
+router.post(
+  "/add",
+  [
+    body("email", "Please enter a valid email.").isEmail(),
+    body("password", "Password musst be atleast 6 characters.")
+      .isLength({
+        min: 6
+      })
+      .isAlphanumeric()
+  ],
+  adminController.createUser
+);
+
 // POST /update user/:id
 router.post("/add/:id", adminController.updateUser);
 

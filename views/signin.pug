@@ -14,9 +14,9 @@ html(lang="en")
             .main-content
                 h2 Sign in
                 .card
-                    form(action="/signin" method="POST")
-                        label(for="username" autofocus) User name
-                        input(type="text" name="username" required)
+                    form(action="/signin" method="POST" novalidate)
+                        label(for="email" autofocus) Email
+                        input(type="email" name="email"  required)
                         label(for="password") Password
                         input(type="password" name='password' required)
-                        button.btn(type="submit" required) Sign in
+                        button.btn.btn--primary(type="submit" required) Sign in

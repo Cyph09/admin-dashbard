@@ -25,8 +25,37 @@ body {
 
 // header
 header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: $dark-primary-color;
   color: $accent-color;
+}
+
+header h1 {
+  flex: 2;
+}
+nav {
+}
+nav ul {
+  margin-left: auto;
+  margin-right: 8px;
+}
+
+.nav__btn {
+  border: none;
+  outline: 0;
+  padding: 10px;
+  display: inline;
+  color: $accent-color;
+  background-color: inherit;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.nav__btn:hover {
+  background-color: $accent-color;
+  color: $primary-color;
 }
 
 .main-content {
@@ -76,6 +105,9 @@ header {
   color: $secondary-text;
 }
 
+.primary-text {
+  color: $primary-color;
+}
 .sub {
   margin: 0;
   font-size: 1.2rem;
@@ -115,16 +147,18 @@ header {
   border: none;
   outline: 0;
   display: inline-block;
-  padding: 8px;
+  padding: 10px;
   color: $primary-color;
-  background-color: $secondary-color;
   text-align: center;
   width: 100%;
   cursor: pointer;
   font-size: 18px;
 }
 
-.btn__danger {
+.btn--primary {
+  background-color: $secondary-color;
+}
+.btn--danger {
   background-color: #f44336;
 }
 .btn:hover {
@@ -155,6 +189,7 @@ form {
 }
 
 form input[type="text"],
+input[type="email"],
 input[type="password"] {
   box-sizing: border-box;
   width: 100%;
@@ -165,9 +200,13 @@ input[type="password"] {
   background: #d4d3d3;
   color: $accent-color;
   font-size: 1rem;
+  .invalid {
+    border-color: #f44336;
+  }
 }
 
 input[type="text"]:focus,
+input[type="email"]:focus,
 input[type="password"]:focus {
   background-color: #ddd;
   outline: none;

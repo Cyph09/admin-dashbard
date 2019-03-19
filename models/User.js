@@ -6,7 +6,9 @@ const UserSchema = new Schema({
   firstName: { type: String, required: "Please enter First name", max: 50 },
   lastName: { type: String, required: "Please enter Last name", max: 50 },
   title: { type: String, required: "Please enter position title", max: 100 },
-  company: { type: String, required: "Please enter company name", max: 100 }
+  company: { type: String, required: "Please enter company name", max: 100 },
+  password: { type: String, required: "Please enter email"},
+  email: { type: String, required: "Please enter password"}
 });
 
 // Virtual full name

@@ -12,10 +12,13 @@ html(lang="en")
         .container
             header
                 h1 #{title}
+                nav.nav
+                    ul.collection
+                        li 
+                            form(action="/signout", method="post")
+                                button.nav__btn(type="submit") Sign out
             .main-content
                 block content
-            .sidebar
-                block sidebar
             footer
                 p All rights reserved 2019
         source(src="/js/main.js")

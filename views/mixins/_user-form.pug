@@ -1,5 +1,5 @@
 mixin userForm(user = {})
-    form(action=`/add/${user._id || ''}`, method="post")
+    form(action=`/add/${user._id || ''}`, method="post" novalidate)
         label(for="firstName") First Name
         input(type="text" name="firstName" value = user.firstName required autofocus)
         label(for="lastName") Last Name
@@ -8,4 +8,8 @@ mixin userForm(user = {})
         input(type="text" name="title" value = user.title required)
         label(for="company") Company
         input(type="text" name="company" value = user.company required)
-        input(type="submit" value="Save ✔" class="btn")
+        label(for="email") Email
+        input(type="email" name="email" value = user.email required)
+        label(for="password") Password
+        input(type="password" name="password" required)
+        input(type="submit" value="Save" class="btn btn--primary")
