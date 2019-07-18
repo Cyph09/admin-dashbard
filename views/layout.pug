@@ -14,6 +14,9 @@ html(lang="en")
                 h1 #{title}
                 nav.nav
                     ul.collection
+                        li
+                            button.nav__btn
+                                a(href="/dashboard") Home
                         li 
                             form(action="/signout", method="post")
                                 button.nav__btn(type="submit") Sign out
